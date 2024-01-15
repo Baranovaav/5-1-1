@@ -1,32 +1,140 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <vector>
+#include <cmath>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+class massiv
+{
+public:
+  std::vector <double> mass;
+  int mass_size;
 
-# Precompiled Headers
-*.gch
-*.pch
+  void new_mass()
+  {
+    double temp;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+    std::cin >> mass_size;
 
-# Fortran module files
-*.mod
-*.smod
+    for (int i = 0; i < mass_size; i++)
+    {
+      std::cin >> temp;
+      mass.push_back(temp);
+    }
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    std::cout << mass.size() << std::endl;
+    result_cout();
 
-# Executables
-*.exe
-*.out
-*.app
+    menu();
+  }
+
+private:
+  void menu()
+  {
+    int point = -1;
+
+    while (point != 0)
+    {
+      std::cin >> point;
+
+      if (point == 0)
+      {
+        break;
+      }
+      else if (point == 1)
+      {
+        add_el();
+      }
+      else if (point == 2)
+      {
+        del_el();
+      }
+
+      result_cout();
+    }
+  }
+
+  void add_el()
+  {
+    double temp;
+    std::cin >> temp;
+
+    mass.push_back(temp);
+
+    std::cout << "+: " << mass.size() << std::endl;
+  }
+
+  void del_el()
+  {
+    mass.pop_back();
+
+    std::cout << "-: " << mass.size() << std::endl;
+  }
+  
+
+  void math_methods()
+  {
+    double summ = 0, arith_mean = 0;
+
+    for (int i = 0; i < mass.size(); i++)
+    {
+      summ += mass[i];
+    }
+
+    arith_mean = summ / mass.size();
+
+    mass.push_back(summ);
+    mass.push_back(arith_mean);
+  }
+
+  void dop_quest()
+  {
+    double max_num = mass[0], slog;
+
+    for (int i = 1; i < mass.size(); i++)
+    {
+      if (max_num < mass[i])
+      {
+        max_num = mass[i];
+      }
+    }
+
+    slog = sqrt(max_num * mass[mass.size() - 1]);
+
+    for (int i = 0; i < mass.size(); i++)
+    {
+      mass[i] += slog;
+    }
+  }
+
+  
+  void result_cout()
+  {
+    print_mass();
+
+    math_methods();
+    print_mass();
+
+    dop_quest();
+    print_mass();
+  }
+  
+  void print_mass()
+  {
+    std::cout.setf(std::ios::fixed);
+    std::cout.precision(3);
+
+    for (int i = 0; i < mass.size(); i++)
+    {
+      std::cout << mass[i] << " ";
+    }
+    std::cout << std::endl;
+  }
+};
+
+int main()
+{
+  massiv start;
+
+  start.new_mass();
+
+  return 0;
+}
