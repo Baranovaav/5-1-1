@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <cmath>
 
@@ -6,15 +6,15 @@ class massiv
 {
 public:
     std::vector <double> mass;
-    int mass_size;
+    int size_of_mass;
 
     void new_mass()
     {
         double temp;
 
-        std::cin >> mass_size;
+        std::cin >> size_of_mass;
 
-        for (int i = 0; i < mass_size; i++)
+        for (int i = 0; i < size_of_mass; i++)
         {
             std::cin >> temp;
             mass.push_back(temp);
@@ -29,21 +29,21 @@ public:
 private:
     void menu()
     {
-        int point = -1;
+        int dot = -1;
 
-        while (point != 0)
+        while (dot != 0)
         {
-            std::cin >> point;
+            std::cin >> dot;
 
-            if (point == 0)
+            if (dot == 0)
             {
                 break;
             }
-            else if (point == 1)
+            else if (dot == 1)
             {
                 add_el();
             }
-            else if (point == 2)
+            else if (dot == 2)
             {
                 del_el();
             }
