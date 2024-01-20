@@ -1,11 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-using namespace std;
 
 class Array {
 public:
-    vector <double> arr;
+    std::vector <double> arr;
 
     void init(int size)
     {
@@ -13,13 +12,13 @@ public:
 
         for (int i = 0; i < size; i++)
         {
-            cin >> temp;
+            std::cin >> temp;
 
             arr.push_back(temp);
         }
     }
 
-    double norma(vector <double> curr_arr)
+    double norma(std::vector <double> curr_arr)
     {
         double res = 0, summ = 0;
 
@@ -38,59 +37,59 @@ public:
         double norma1 = norma(this->arr), norma2 = norma(arr2.arr);
         double scalMult = 0;
 
-        cout << "vector1= ";
+        std::cout << "vector1= ";
         for (int i = 0; i < size; i++)
         {
-            cout << this->arr[i] << " ";
+            std::cout << this->arr[i] << " ";
         }
 
-        cout << "norma= " << norma1 << endl;
+        std::cout << "norma= " << norma1 << std::endl;
 
-        cout << "vector2= ";
+        std::cout << "vector2= ";
         for (int i = 0; i < size; i++)
         {
-            cout << arr2.arr[i] << " ";
+            std::cout << arr2.arr[i] << " ";
         }
 
-        cout << "norma= " << norma2 << endl;
+        std::cout << "norma= " << norma2 << std::endl;
 
-        cout << "summa= ";
+        std::cout << "summa= ";
         for (int i = 0; i < size; i++)
         {
-            cout << this->arr[i] + arr2.arr[i] << " ";
+            std::cout << this->arr[i] + arr2.arr[i] << " ";
         }
 
-        cout << "\nraznost= ";
+        std::cout << "\nraznost= ";
         for (int i = 0; i < size; i++)
         {
-            cout << this->arr[i] - arr2.arr[i] << " ";
+            std::cout << this->arr[i] - arr2.arr[i] << " ";
         }
 
-        cout << "\nscalar= ";
+        std::cout << "\nscalar= ";
         for (int i = 0; i < size; i++)
         {
             scalMult += this->arr[i] * arr2.arr[i];
         }
-        cout << scalMult;
+        std::cout << scalMult;
 
-        cout << "\nmult chislo * Vector1= ";
+        std::cout << "\nmult chislo * Vector1= ";
         for (int i = 0; i < size; i++)
         {
-            cout << this->arr[i] * scal << " ";
+            std::cout << this->arr[i] * scal << " ";
         }
 
-        cout << "\nmult chislo * Vector2= ";
+        std::cout << "\nmult chislo * Vector2= ";
         for (int i = 0; i < size; i++)
         {
-            cout << arr2.arr[i] * scal << " ";
+            std::cout << arr2.arr[i] * scal << " ";
         }
 
         if (norma1 == norma2)
-            cout << "\nnorma(Vector1) = norma(Vector2)";
+            std::cout << "\nnorma(Vector1) = norma(Vector2)";
         else if (norma1 > norma2)
-            cout << "\nnorma(Vector1) > norma(Vector2)";
+            std::cout << "\nnorma(Vector1) > norma(Vector2)";
         else
-            cout << "\nnorma(Vector1) < norma(Vector2)";
+            std::cout << "\nnorma(Vector1) < norma(Vector2)";
     }
 };
 
@@ -100,12 +99,12 @@ int main()
     int size;
     double scal;
 
-    cin >> size;
+    std::cin >> size;
 
     arr1.init(size);
     arr2.init(size);
 
-    cin >> scal;
+    std::cin >> scal;
 
     arr1.print(arr2, size, scal);
 
